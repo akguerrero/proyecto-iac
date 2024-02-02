@@ -1,0 +1,2 @@
+Nameproject = "AppCryp"
+Environment = "Dev"
