@@ -1,2 +1,2 @@
-Nameproject = "AppCryp"
+Nameproject = "OnboardingWeb"
 Environment = "QA"
