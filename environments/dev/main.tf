@@ -1,7 +1,7 @@
 module "OnboardingWeb_Client_Enroll_User" {
   source = "../../modules/OnboardingWeb_Client_Enroll_User"  
   filename      = "lambda_function.zip"
-  description   = "Permite hacer enroll a un usuario"
+  description   = "Permite hacer enroll a un usuario."
   function_name = "OnboardingWeb_Client_Enroll_User"
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.8"
@@ -19,7 +19,7 @@ module "OnboardingWeb_Client_Enroll_User" {
 module "OnboardingWeb_Client_Validate_User" {
   source = "../../modules/OnboardingWeb_Client_Validate_User"  
   filename      = "lambda_function.zip"
-  description   = "Permite validar un usuario"
+  description   = "Permite validar un usuario."
   function_name = "OnboardingWeb_Client_Validate_User"
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.8"
