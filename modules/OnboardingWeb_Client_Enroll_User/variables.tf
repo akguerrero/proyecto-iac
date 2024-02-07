@@ -46,19 +46,19 @@ variable "BACKEND_URL" {
 }
 variable "X_COMPRESSED_COMMUNICATION" {
   description = "X_COMPRESSED_COMMUNICATION"
-  type        = string
+  type        = bool
 }
 variable "X_CHANNEL" {
   description = "X_CHANNEL"
-  type        = string
+  type        = number
 }
 variable "X_PROTECTED_COMMUNICATION" {
   description = "X_PROTECTED_COMMUNICATION"
-  type        = string
+  type        = bool
 }
 variable "X_SESSION_EXPIRATION_TIME" {
   description = "X_SESSION_EXPIRATION_TIME"
-  type        = string
+  type        = number
 }
 variable "X_TWR_TOKEN" {
   description = "X_TWR_TOKEN"
