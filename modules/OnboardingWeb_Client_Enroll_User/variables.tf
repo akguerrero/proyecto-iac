@@ -44,12 +44,20 @@ variable "BACKEND_URL" {
   description = "BACKEND_URL"
   type        = string
 }
-variable "ENCRYPT_FUNCTION" {
-  description = "ENCRYPT_FUNCTION"
+variable "X_COMPRESSED_COMMUNICATION" {
+  description = "X_COMPRESSED_COMMUNICATION"
   type        = string
 }
 variable "X_CHANNEL" {
   description = "X_CHANNEL"
+  type        = string
+}
+variable "X_PROTECTED_COMMUNICATION" {
+  description = "X_PROTECTED_COMMUNICATION"
+  type        = string
+}
+variable "X_SESSION_EXPIRATION_TIME" {
+  description = "X_SESSION_EXPIRATION_TIME"
   type        = string
 }
 variable "X_TWR_TOKEN" {

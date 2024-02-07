@@ -27,10 +27,12 @@ resource "aws_lambda_function" "lambda_python" {
 
   environment {
     variables = {
-      BACKEND_URL       = "${var.BACKEND_URL}"
-      ENCRYPT_FUNCTION  = "${var.ENCRYPT_FUNCTION}"
-      X_CHANNEL         = "${var.X_CHANNEL}"
-      X_TWR_TOKEN       = "${var.X_TWR_TOKEN}"
+      BACKEND_URL                = "${var.BACKEND_URL}"
+      X_COMPRESSED_COMMUNICATION = "${var.X_COMPRESSED_COMMUNICATION}"
+      X_CHANNEL                  = "${var.X_CHANNEL}"
+      X_PROTECTED_COMMUNICATION  = "${var.X_PROTECTED_COMMUNICATION}"
+      X_SESSION_EXPIRATION_TIME  = "${var.X_SESSION_EXPIRATION_TIME}"
+      X_TWR_TOKEN                = "${var.X_TWR_TOKEN}"
     }
   }
 
