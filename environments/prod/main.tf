@@ -9,7 +9,7 @@ module "OnboardingWeb_Client_Enroll_User" {
   timeout       = 120
   subnet_ids         = ["subnet-0d311169443103688", "subnet-0889172aa899a25d0"]
   security_group_ids = ["sg-0fd370852a4ae84c5"]
-  BACKEND_URL                    = "https://tbfc01-ic06bk20.towerbank.interno/PA_Towerbank_ICBanking.WebApi.BO/api/framework/cryptocustom/UserEnroll"
+  BACKEND_URL                    = "https://tbfc01-okbfp01.towerbank.interno/PA_Towerbank_ICBanking.WebApi.BO/api/framework/cryptocustom/UserEnroll"
   X_COMPRESSED_COMMUNICATION     = false
   X_CHANNEL                      = 100
   X_PROTECTED_COMMUNICATION      = false
@@ -28,7 +28,7 @@ module "OnboardingWeb_Client_Validate_User" {
   timeout       = 120
   subnet_ids         = ["subnet-0d311169443103688", "subnet-0889172aa899a25d0"]
   security_group_ids = ["sg-0fd370852a4ae84c5"]
-  BACKEND_URL                    = "https://tbfc01-ic06bk20.towerbank.interno/PA_Towerbank_ICBanking.WebApi.BO/api/framework/cryptocustom/validateuserdata"
+  BACKEND_URL                    = "https://tbfc01-okbfp01.towerbank.interno/PA_Towerbank_ICBanking.WebApi.BO/api/framework/cryptocustom/validateuserdata"
   X_COMPRESSED_COMMUNICATION     = false
   X_CHANNEL                      = 100
   X_PROTECTED_COMMUNICATION      = false
