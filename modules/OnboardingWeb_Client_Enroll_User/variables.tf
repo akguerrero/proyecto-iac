@@ -44,6 +44,22 @@ variable "BACKEND_URL" {
   description = "BACKEND_URL"
   type        = string
 }
+variable "CACHE_FUNCTION" {
+  description = "CACHE_FUNCTION"
+  type        = string
+}
+variable "CRYPTO_KEY_SECRET_NAME" {
+  description = "CRYPTO_KEY_SECRET_NAME"
+  type        = string
+}
+variable "DECRYPT_FUNCTION" {
+  description = "DECRYPT_FUNCTION"
+  type        = string
+}
+variable "ENCRYPT_FUNCTION" {
+  description = "DECRYPT_FUNCTION"
+  type        = string
+}
 variable "X_COMPRESSED_COMMUNICATION" {
   description = "X_COMPRESSED_COMMUNICATION"
   type        = bool
