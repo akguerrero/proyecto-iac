@@ -9,7 +9,11 @@ module "OnboardingWeb_Client_Enroll_User" {
   timeout       = 120
   subnet_ids         = ["subnet-0d311169443103688", "subnet-0889172aa899a25d0"]
   security_group_ids = ["sg-0fd370852a4ae84c5"]
-  BACKEND_URL                    = "https://tbfc01-okbfp01.towerbank.interno/PA_Towerbank_ICBanking.WebApi.BO/api/framework/cryptocustom/UserEnroll"
+  BACKEND_URL                    = "https://tbfc01-ic06bk20.towerbank.interno/PA_Towerbank_ICBanking.WebApi.BO/api/framework/cryptocustom/UserEnroll"
+  CACHE_FUNCTION                 = "AppCryp_Cache"
+  CRYPTO_KEY_SECRET_NAME         = "CIPHER_KEY_VALUE"
+  DECRYPT_FUNCTION               = "AppCryp_Build38_Security_Decrypt"
+  ENCRYPT_FUNCTION               = "AppCryp_Build38_Security_Encrypt"
   X_COMPRESSED_COMMUNICATION     = false
   X_CHANNEL                      = 100
   X_PROTECTED_COMMUNICATION      = false
