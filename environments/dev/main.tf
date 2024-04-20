@@ -11,7 +11,7 @@ module "lambda" {
   handler       = "lambda_function.lambda_handler"
   runtime       = "python3.8"
   timeout       = 120
-  role = "lambda_role"
+  role          = module.role.role_arn
   Nameproject = var.Nameproject
   Environment = var.Environment
     depends_on = [
