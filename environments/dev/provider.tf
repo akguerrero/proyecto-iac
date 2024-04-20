@@ -3,8 +3,8 @@ provider "aws"{
 }
 terraform {
   backend "s3" {
-    bucket = "tb-onboarding-web-iac-state-dev"
-    key    = "lambda/terraform.tfstate"
+    bucket = "terraform-state-mdw"
+    key    = "iac/terraform.tfstate"
     region = "us-east-1"
   }
 }
