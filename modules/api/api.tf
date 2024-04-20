@@ -11,8 +11,8 @@ resource "aws_api_gateway_rest_api" "example" {
           x-amazon-apigateway-integration = {
             httpMethod           = "GET"
             payloadFormatVersion = "1.0"
-            type                 = "HTTP_PROXY"
-            uri                  = "https://ip-ranges.amazonaws.com/ip-ranges.json"
+            type                 = "AWS_PROXY"
+            uri                  = var.uri
           }
         }
       }

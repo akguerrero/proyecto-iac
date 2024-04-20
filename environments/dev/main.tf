@@ -22,6 +22,7 @@ module "lambda" {
 module "api" {
   source = "../../modules/api"  
   name_rol = "api"
+  uri = "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:871340136996:function:${module.lambda.function_name}/invocations"
   depends_on = [
       module.lambda
   ] 
