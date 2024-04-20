@@ -1,4 +1,4 @@
-name: IaC Terraform Lambdas APPCrypto Dev
+name: IaC Terraform
 
 on:
   workflow_dispatch:
@@ -8,11 +8,11 @@ on:
     #paths-ignore: [ '.github/**', '.gitignore' ]
     #paths:
     #  - 'environments/dev/**'
-env:
-  PROJECT: ${{ github.event.repository.name }}
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-  AWS_REGION: ${{ secrets.AWS_REGION }}  
+#env:
+#  PROJECT: ${{ github.event.repository.name }}
+#  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
+#  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
+#  AWS_REGION: ${{ secrets.AWS_REGION }}  
 
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
   Despliegue_Terraform:
     runs-on: self-hosted
     needs: clean
-    if: contains(github.event.head_commit.message, 'lambda-dev')
+    #if: contains(github.event.head_commit.message, 'lambda-dev')
 
     steps:
 
@@ -40,76 +40,36 @@ jobs:
           sudo apt update
           sudo apt-get install terraform
 
-      - name: Configurando credenciales para AWS
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-          aws-region: ${{ secrets.AWS_REGION }}
+      #- name: Configurando credenciales para AWS
+      #  uses: aws-actions/configure-aws-credentials@v2
+      #  with:
+      #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
+      #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
+      #    aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sleep for 5 seconds
-        run: sleep 5s
-        shell: bash
+      #- name: Sleep for 5 seconds
+      #  run: sleep 5s
+      #  shell: bash
 
       - name: Terraform Init
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
+        #env:
+        #  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
+        #  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
         working-directory: ./environments/dev
         run: |
             terraform init -input=false
     
         # Generates an execution plan for Terraform
-      - name: Terraform Plan
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-        working-directory: ./environments/dev
-        run: terraform plan -input=false -out="main.tfplan"
+      #- name: Terraform Plan
+      #  env:
+      #    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
+      #    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
+      #  working-directory: ./environments/dev
+      #  run: terraform plan -input=false -out="main.tfplan"
 
-      - name: Terraform Apply
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-        working-directory: ./environments/dev
-        run: terraform apply -auto-approve "main.tfplan"
-
-  Destroy_Terraform:
-    runs-on: self-hosted
-    needs: clean
-    if: contains(github.event.head_commit.message, 'lambda-destroy-dev')
-
-    steps:
-      - name: Configurando credenciales para AWS
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Sleep for 5 seconds
-        run: sleep 5s
-        shell: bash
-
-      - name: Terraform Init Destroy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-        working-directory: ./environments/dev
-        run: |
-            terraform init -input=false
-    
-        # Generates an execution plan for Terraform
-      - name: Terraform Plan Destroy
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-        working-directory: ./environments/dev
-        run: terraform plan -input=false -out="main.tfplan"
-
-#      - name: Terraform Destroy Destroy
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
-#        working-directory: ./environments/dev
-#        run: terraform destroy -auto-approve  -target module.AppCryp_Access_Security_Login-test 
+      #- name: Terraform Apply
+      #  env:
+      #    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
+      #    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
+      #  working-directory: ./environments/dev
+      #  run: terraform apply -auto-approve "main.tfplan"
