@@ -17,8 +17,8 @@ resource "aws_lambda_function" "lambda_python" {
  #source_code_hash = data.archive_file.lambda.output_base64sha256
 
   vpc_config {
-    subnet_ids         = ""
-    security_group_ids = ""
+    subnet_ids         = [""]
+    security_group_ids = [""]
   }
 
   environment {
