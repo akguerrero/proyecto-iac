@@ -1,2 +1,0 @@
-# AppCryp_iac_lamb
-IaC Terraform Lambdas PROD.

@@ -1,2 +1,0 @@
-Nameproject = "OnboardingWeb"
-Environment = "PROD"
