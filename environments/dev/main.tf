@@ -22,7 +22,7 @@ module "lambda" {
 module "api" {
   source = "../../modules/api"  
   name_rol = "api"
-  uri = module.lambda.lambda_arn
+  uri = module.lambda.lambda_invoke_arn
   depends_on = [
       module.lambda
   ] 
