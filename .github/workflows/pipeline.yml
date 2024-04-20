@@ -49,9 +49,10 @@ jobs:
       #  shell: bash
 
       - name: Terraform Init
-        #env:
-        #  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_CAPP_DEV }}
-        #  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_CAPP_DEV }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
         working-directory: environments/dev
         run: |
             terraform init -input=false
