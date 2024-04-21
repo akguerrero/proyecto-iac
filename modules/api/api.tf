@@ -6,7 +6,7 @@ resource "aws_api_gateway_rest_api" "api-iac" {
       version = "1.0"
     }
     paths = {
-      "/lambda" = {
+      "/${var.path1}" = {
         get = {
           x-amazon-apigateway-integration = {
             httpMethod           = "GET"
@@ -16,7 +16,7 @@ resource "aws_api_gateway_rest_api" "api-iac" {
           }
         }
       }
-      "/path1" = {
+      "/${var.path2}" = {
         get = {
 
           "parameters": [
