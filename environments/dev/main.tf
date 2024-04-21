@@ -23,7 +23,7 @@ module "api" {
   source = "../../modules/api"  
   name_rol = "api_role"
   uri = module.lambda.lambda_invoke_arn
-  path1 = "path01"
+  path1 = "path001"
   path2 = "anime-quote"
   depends_on = [
       module.lambda
