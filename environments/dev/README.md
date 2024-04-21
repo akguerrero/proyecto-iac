@@ -1,2 +1,2 @@
 # AppCryp_iac_lamb
-IaC Terraform Lambdas Dev..
+IaC Terraform Lambdas Dev...
