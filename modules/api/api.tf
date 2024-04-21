@@ -9,7 +9,7 @@ resource "aws_api_gateway_rest_api" "api-iac" {
       "/${var.path1}" = {
         post = {
           x-amazon-apigateway-integration = {
-            httpMethod           = "GET"
+            httpMethod           = "POST"
             payloadFormatVersion = "1.0"
             type                 = "AWS_PROXY"
             uri                  = var.uri
