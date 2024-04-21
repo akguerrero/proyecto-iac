@@ -7,7 +7,7 @@ resource "aws_api_gateway_rest_api" "api-iac" {
     }
     paths = {
       "/${var.path1}" = {
-        get = {
+        post = {
           x-amazon-apigateway-integration = {
             httpMethod           = "GET"
             payloadFormatVersion = "1.0"
