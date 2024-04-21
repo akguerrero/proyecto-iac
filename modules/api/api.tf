@@ -1,12 +1,12 @@
-resource "aws_api_gateway_rest_api" "example" {
+resource "aws_api_gateway_rest_api" "api-iac" {
   body = jsonencode({
     openapi = "3.0.1"
     info = {
-      title   = "example"
+      title   = "api_iac"
       version = "1.0"
     }
     paths = {
-      "/path1" = {
+      "/lambda" = {
         get = {
           x-amazon-apigateway-integration = {
             httpMethod           = "GET"
@@ -16,21 +16,44 @@ resource "aws_api_gateway_rest_api" "example" {
           }
         }
       }
+      "/path1" = {
+        get = {
+
+          "parameters": [
+            {
+              "name": "name",
+              "in": "query",
+              "description": "",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ]
+
+          x-amazon-apigateway-integration = {
+            httpMethod           = "GET"
+            payloadFormatVersion = "1.0"
+            type                 = "HTTP_PROXY"
+            uri                  = "https://animechan.xyz/api/random/character"
+          }
+        }
+      }
     }
   })
 
-  name = "example"
+  name = "api_iac"
 
   endpoint_configuration {
     types = ["REGIONAL"]
   }
 }
 
-resource "aws_api_gateway_deployment" "example" {
-  rest_api_id = aws_api_gateway_rest_api.example.id
+resource "aws_api_gateway_deployment" "deployment" {
+  rest_api_id = aws_api_gateway_rest_api.api-iac.id
 
   triggers = {
-    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.example.body))
+    redeployment = sha1(jsonencode(aws_api_gateway_rest_api.api-iac.body))
   }
 
   lifecycle {
@@ -38,8 +61,8 @@ resource "aws_api_gateway_deployment" "example" {
   }
 }
 
-resource "aws_api_gateway_stage" "example" {
-  deployment_id = aws_api_gateway_deployment.example.id
-  rest_api_id   = aws_api_gateway_rest_api.example.id
-  stage_name    = "example"
+resource "aws_api_gateway_stage" "dev" {
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.api-iac.id
+  stage_name    = "dev"
 }
